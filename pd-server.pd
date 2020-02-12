@@ -1,9 +1,9 @@
-#N canvas -9 -9 1920 976 12;
-#X floatatom 301 646 5 0 0 0 - - -;
-#X obj 268 676 route text binary;
-#X floatatom 333 616 5 0 0 0 - - -;
-#X text 341 644 <- NUMBER OF CONNECTED WEBSOCKETS;
-#X text 373 614 <- RECEIVING SOCKET NUMBER;
+#N canvas 451 52 832 976 12;
+#X floatatom 71 636 5 0 0 0 - - -;
+#X obj 38 666 route text binary;
+#X floatatom 103 606 5 0 0 0 - - -;
+#X text 111 634 <- NUMBER OF CONNECTED WEBSOCKETS;
+#X text 143 604 <- RECEIVING SOCKET NUMBER;
 #N canvas 159 62 1378 625 websocket-server 0;
 #X obj 1139 197 r websockets-list;
 #X obj 1025 21 inlet;
@@ -2079,8 +2079,8 @@ some cosmetic object alignements for pd vanilla;
 #X connect 49 0 44 0;
 #X connect 50 0 33 0;
 #X connect 54 0 4 0;
-#X restore 236 540 pd websocket-server;
-#X obj 366 586 print WEBSOCKETS LIST;
+#X restore 6 530 pd websocket-server;
+#X obj 136 576 print WEBSOCKETS LIST;
 #N canvas 249 50 943 942 text2pdmessage 0;
 #X obj 95 210 list split 1;
 #X obj 95 182 list;
@@ -2254,26 +2254,26 @@ work the way they should \, without output);
 #X connect 61 0 47 0;
 #X connect 62 0 59 1;
 #X connect 62 0 54 1;
-#X restore 268 708 pd text2pdmessage;
-#X obj 268 737 route 0 1 2 3 4;
-#X obj 268 778 vsl 15 128 0 100 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 10160 1;
-#X obj 288 778 vsl 15 128 0 100 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
-#X obj 308 778 vsl 15 128 0 100 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
-#X obj 329 778 vsl 15 128 0 100 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
-#X obj 349 778 vsl 15 128 0 100 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
-#X obj 260 270 0;
-#X obj 289 270 1;
-#X obj 236 296 spigot 1;
-#X obj 236 320 t l b b;
-#X msg 236 122 1 1;
-#X obj 236 437 list prepend;
-#X obj 236 209 list prepend text;
-#X msg 317 410 broadcast;
+#X restore 38 698 pd text2pdmessage;
+#X obj 38 727 route 0 1 2 3 4;
+#X obj 38 768 vsl 15 128 0 100 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 5842 1;
+#X obj 58 768 vsl 15 128 0 100 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 5842 1;
+#X obj 78 768 vsl 15 128 0 100 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 7874 1;
+#X obj 99 768 vsl 15 128 0 100 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4572 1;
+#X obj 119 768 vsl 15 128 0 100 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 4572 1;
+#X obj 30 260 0;
+#X obj 59 260 1;
+#X obj 6 286 spigot 1;
+#X obj 6 310 t l b b;
+#X msg 6 112 1 1;
+#X obj 6 427 list prepend;
+#X obj 6 199 list prepend text;
+#X msg 87 400 broadcast;
 #N canvas 368 177 840 700 socket-gui 0;
 #X obj 370 70 r websockets-list;
 #X obj 139 223 list;
@@ -2433,15 +2433,15 @@ empty 0 -8 0 12 -262144 -1 -1 0 256;
 #X connect 55 0 56 0;
 #X connect 56 0 52 0;
 #X coords 0 -1 1 1 150 16 1 100 100;
-#X restore 317 380 pd socket-gui;
-#X text 389 410 <- specify 'send <socket-number' or broadcast;
-#X text 327 437 <- and put it before <type> <data>;
-#X text 337 175 <- convert to ascii-codes for <DATA>;
-#X text 370 208 <- put <TYPE> before <data>;
-#X obj 259 345 delay 30;
-#X text 322 344 (<- add more delay if needed \, when send-buffer struggles)
+#X restore 87 370 pd socket-gui;
+#X text 159 400 <- specify 'send <socket-number' or broadcast;
+#X text 97 427 <- and put it before <type> <data>;
+#X text 107 165 <- convert to ascii-codes for <DATA>;
+#X text 140 198 <- put <TYPE> before <data>;
+#X obj 29 335 delay 30;
+#X text 92 334 (<- add more delay if needed \, when send-buffer struggles)
 ;
-#X text 299 309 get new message to send every 30ms to prevent overflow
+#X text 69 299 get new message to send every 30ms to prevent overflow
 \; (especially when 'flames" broadcast its waveform array);
 #N canvas 336 70 344 534 list2ascii 0;
 #X obj 125 267 list fromsymbol;
@@ -2487,7 +2487,7 @@ empty 0 -8 0 12 -262144 -1 -1 0 256;
 #X connect 15 0 14 0;
 #X connect 15 1 0 0;
 #X connect 16 0 6 0;
-#X restore 236 175 pd list2ascii;
+#X restore 6 165 pd list2ascii;
 #N canvas 1177 399 298 299 show-message 0;
 #X obj 79 88 list;
 #X msg 195 216 set;
@@ -2513,11 +2513,14 @@ empty 0 -8 0 12 -262144 -1 -1 0 256;
 #X connect 9 1 2 0;
 #X connect 9 2 3 1;
 #X connect 9 2 1 0;
-#X restore 236 80 pd show-message;
-#X msg 236 45 1 1;
-#X obj 268 496 mrpeach/tcpserver 9899;
+#X restore 6 70 pd show-message;
+#X obj 38 486 mrpeach/tcpserver 9899;
+#X msg 6 5 1 1;
+#X text 43 4 <- Message: first value from 0 to 4 is the channel seecond
+value 0 to 1 meaning 0 for slider disabled false and 1 for disabled
+true;
 #X connect 1 0 7 0;
-#X connect 5 0 33 0;
+#X connect 5 0 32 0;
 #X connect 5 1 1 0;
 #X connect 5 2 0 0;
 #X connect 5 3 2 0;
@@ -2542,8 +2545,8 @@ empty 0 -8 0 12 -262144 -1 -1 0 256;
 #X connect 27 0 15 0;
 #X connect 30 0 20 0;
 #X connect 31 0 18 0;
-#X connect 32 0 31 0;
-#X connect 33 0 5 1;
-#X connect 33 1 5 2;
-#X connect 33 2 5 3;
-#X connect 33 4 5 4;
+#X connect 32 0 5 1;
+#X connect 32 1 5 2;
+#X connect 32 2 5 3;
+#X connect 32 4 5 4;
+#X connect 33 0 31 0;

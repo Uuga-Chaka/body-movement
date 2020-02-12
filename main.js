@@ -3,10 +3,12 @@ const sliders = 5;
 var localIP = null;
 var ws = null;
 
-const slider = (name, activo, svalue) => {
+var colors = ['#131A40', '#355B8C', '#081826', '#17AEBF', '#30F2F2'];
+
+const slider = (name, activo, svalue, color) => {
     return (
         `<div class="${name}"> 
-            <div class="${name + '-bg'}" disabled="${activo}" ></div>
+            <div class="${name + '-bg'}" disabled="${activo}" style="background-color:${color}"></div>
             <input type="range" min="0" max="100" value="50" class="${name + '-slider'}"/>
         </div>`);
 }
@@ -52,10 +54,10 @@ var connection = function () {
     };
 
     ws.onmessage = function (event) {
-        alert(`[message] Data received from server: ${event.data}`);
+        // alert(`[message] Data received from server: ${event.data}`);
         var data = event.data.split(' ');
         slidersRange[data[0]].disabled = data[1] == 1 ? false : true;
-        slidersBg[data[0]].style.backgroundColor = data[1] == 1 ? 'red' : 'gray';
+        slidersBg[data[0]].style.backgroundColor = data[1] == 1 ? colors[data[0]] : 'gray';
     };
 
     ws.onclose = (e) => {
@@ -70,7 +72,7 @@ window.onload = function () {
     for (let i = 0; i < state.slider.length; i++) {
         var sld = state.slider[i];
 
-        this.main.innerHTML += slider(sld.name, sld.activo, this.parseInt(sld.sliderValue));
+        this.main.innerHTML += slider(sld.name, sld.activo, this.parseInt(sld.sliderValue), colors[i]);
     }
 
     slidersRange = document.querySelectorAll('.slider-slider');
